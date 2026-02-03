@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    width: 320px;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+h1 {
+    color: #ff3366;
+}
+
+.buttons {
+    position: relative;
+    height: 150px;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+#yes {
+    background: #ff3366;
+    color: white;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+}
+
+#no {
+    background: #ddd;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+    <h1>Will you be my Valentine? 💘</h1>
+
+    <div class="buttons">
+        <button id="no">No 💔</button>
+        <button id="yes">Yes ❤️</button>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const container = document.querySelector(".buttons");
+
+function moveNoButton() {
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const maxX = containerRect.width - btnRect.width;
+    const maxY = containerRect.height - btnRect.height;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+// Runs away when cursor gets near (NOT disappearing)
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+// For mobile (touch)
+noBtn.addEventListener("touchstart", moveNoButton);
+
+document.getElementById("yes").addEventListener("click", () => {
+    document.getElementById("card").innerHTML = `
+        <h1>Elyeeey 😍❤️</h1>
+        <p>Enti l khtart fatouma 💖</p>
+        <img src="love.gif" style="width:200px; margin-top:15px;">
+
+    `;
+});
+</script>
+
+</body>
+</html>
